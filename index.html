@@ -15,13 +15,13 @@
     .feed { margin-bottom: 2rem; }
     footer { background: #222; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
     .video-container { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-    .video-container iframe { width: 300px; height: 170px; border: none; }
+    .video-container iframe { width: 250px; height: 140px; border: none; }
   </style>
 </head>
 <body>
   <header>
     <h1>MAS Tecnología</h1>
-    <p>Resumen automático de las últimas novedades en tecnología y programación</p>
+    <p>Resumen automático de las últimas novedades en tecnología y programación (en español)</p>
   </header>
   <nav>
     <a href="#novedades">Novedades</a>
@@ -34,16 +34,16 @@
   <section id="novedades">
     <h2>📰 Novedades recientes</h2>
     <div class="feed" id="feed-xataka">Cargando Xataka...</div>
-    <div class="feed" id="feed-techcrunch">Cargando TechCrunch...</div>
-    <div class="feed" id="feed-tnw">Cargando The Next Web...</div>
+    <div class="feed" id="feed-genbeta">Cargando Genbeta...</div>
+    <div class="feed" id="feed-omicrono">Cargando Omicrono...</div>
   </section>
 
   <section id="videos">
     <h2>🎥 Videos de tecnología</h2>
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/pKd0Rpw7O48" title="API REST Node.js"></iframe>
-      <iframe src="https://www.youtube.com/embed/MkcfB7S4fq0" title="¿Qué es DevOps?"></iframe>
-      <iframe src="https://www.youtube.com/embed/2LisQQmWQkY" title="Machine Learning explicado fácil"></iframe>
+      <iframe src="https://www.youtube.com/embed/JJpxmgjvYMI" title="¿Qué es la inteligencia artificial?"></iframe>
+      <iframe src="https://www.youtube.com/embed/Uc7b6qJBiZU" title="Historia de los lenguajes de programación"></iframe>
+      <iframe src="https://www.youtube.com/embed/Bf-2K8bA6Kk" title="¿Qué es la nube y cómo funciona?"></iframe>
     </div>
   </section>
 
@@ -52,10 +52,10 @@
     <p>Aquí se mostrará una lista de términos populares extraídos automáticamente (futuro desarrollo).</p>
     <ul>
       <li>Python</li>
-      <li>Machine Learning</li>
-      <li>Cloud Computing</li>
-      <li>DevOps</li>
-      <li>React.js</li>
+      <li>Inteligencia Artificial</li>
+      <li>Desarrollo Web</li>
+      <li>Computación en la nube</li>
+      <li>Ciberseguridad</li>
     </ul>
   </section>
 
@@ -63,8 +63,8 @@
     <h2>🔗 Fuentes utilizadas</h2>
     <ul>
       <li><a href="https://www.xataka.com/tag/programacion" target="_blank">Xataka</a></li>
-      <li><a href="https://techcrunch.com" target="_blank">TechCrunch</a></li>
-      <li><a href="https://thenextweb.com" target="_blank">The Next Web</a></li>
+      <li><a href="https://www.genbeta.com" target="_blank">Genbeta</a></li>
+      <li><a href="https://omicrono.elespanol.com/" target="_blank">Omicrono</a></li>
     </ul>
   </section>
 
@@ -94,8 +94,8 @@
     }
 
     cargarFeed("https://api.rss2json.com/v1/api.json?rss_url=https://www.xataka.com/tag/programacion/rss2.xml", "feed-xataka", "Xataka");
-    cargarFeed("https://api.rss2json.com/v1/api.json?rss_url=https://techcrunch.com/feed/", "feed-techcrunch", "TechCrunch");
-    cargarFeed("https://api.rss2json.com/v1/api.json?rss_url=https://thenextweb.com/feed/", "feed-tnw", "The Next Web");
+    cargarFeed("https://api.rss2json.com/v1/api.json?rss_url=https://www.genbeta.com/feed", "feed-genbeta", "Genbeta");
+    cargarFeed("https://api.rss2json.com/v1/api.json?rss_url=https://omicrono.elespanol.com/feed", "feed-omicrono", "Omicrono");
   </script>
 </body>
 </html>
