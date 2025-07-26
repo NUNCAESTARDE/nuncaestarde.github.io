@@ -1,72 +1,101 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MAS TecnologÌa</title>
+  <title>MAS Tecnolog√≠a</title>
   <style>
     body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
-    header { background: #333; color: white; padding: 1rem; text-align: center; }
-    h1 { margin: 0; }
-    nav { background: #444; padding: 0.5rem; text-align: center; }
-    nav a { color: white; margin: 0 1rem; text-decoration: none; }
-    section { padding: 1rem; max-width: 800px; margin: auto; background: white; }
+    header { background: #222; color: white; padding: 1rem; text-align: center; }
+    nav { background: #333; padding: 0.5rem; text-align: center; }
+    nav a { color: white; margin: 0 1rem; text-decoration: none; font-weight: bold; }
+    section { padding: 1rem; max-width: 900px; margin: auto; background: white; }
+    h2 { border-bottom: 2px solid #ccc; padding-bottom: 0.3rem; }
     .feed { margin-bottom: 2rem; }
-    footer { background: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+    footer { background: #222; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+    .video-container { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    .video-container iframe { width: 300px; height: 170px; border: none; }
   </style>
 </head>
 <body>
   <header>
-    <h1>MAS TecnologÌa</h1>
-    <p>Lo ˙ltimo en Sistemas de InformaciÛn y ProgramaciÛn</p>
+    <h1>MAS Tecnolog√≠a</h1>
+    <p>Resumen autom√°tico de las √∫ltimas novedades en tecnolog√≠a y programaci√≥n</p>
   </header>
   <nav>
     <a href="#novedades">Novedades</a>
-    <a href="#tendencias">Tendencias</a>
+    <a href="#videos">Videos</a>
+    <a href="#tendencias">Tendencias IA</a>
     <a href="#fuentes">Fuentes</a>
     <a href="#contacto">Contacto</a>
   </nav>
+
   <section id="novedades">
-    <h2>? ⁄ltimas noticias</h2>
-    <div class="feed" id="rss-feed">Cargando noticias...</div>
+    <h2>üì∞ Novedades recientes</h2>
+    <div class="feed" id="feed-xataka">Cargando Xataka...</div>
+    <div class="feed" id="feed-techcrunch">Cargando TechCrunch...</div>
+    <div class="feed" id="feed-tnw">Cargando The Next Web...</div>
   </section>
+
+  <section id="videos">
+    <h2>üé• Videos de tecnolog√≠a</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/pKd0Rpw7O48" title="API REST Node.js"></iframe>
+      <iframe src="https://www.youtube.com/embed/MkcfB7S4fq0" title="¬øQu√© es DevOps?"></iframe>
+      <iframe src="https://www.youtube.com/embed/2LisQQmWQkY" title="Machine Learning explicado f√°cil"></iframe>
+    </div>
+  </section>
+
   <section id="tendencias">
-    <h2>? Tendencias Actuales</h2>
-    <p>AquÌ aparecer·n temas destacados detectados por IA prÛximamente.</p>
-  </section>
-  <section id="fuentes">
-    <h2>? Fuentes Confiables</h2>
+    <h2>üìà Tendencias (demo IA)</h2>
+    <p>Aqu√≠ se mostrar√° una lista de t√©rminos populares extra√≠dos autom√°ticamente (futuro desarrollo).</p>
     <ul>
-      <li><a href="https://techcrunch.com" target="_blank">TechCrunch</a></li>
-      <li><a href="https://thenextweb.com" target="_blank">The Next Web</a></li>
-      <li><a href="https://www.xataka.com" target="_blank">Xataka</a></li>
+      <li>Python</li>
+      <li>Machine Learning</li>
+      <li>Cloud Computing</li>
+      <li>DevOps</li>
+      <li>React.js</li>
     </ul>
   </section>
-  <section id="contacto">
-    <h2>?? Contacto</h2>
-    <p>Para sugerencias, escrÌbenos a <a href="mailto:contacto@mastecnologia.com">contacto@mastecnologia.com</a></p>
+
+  <section id="fuentes">
+    <h2>üîó Fuentes utilizadas</h2>
+    <ul>
+      <li><a href="https://www.xataka.com/tag/programacion" target="_blank">Xataka</a></li>
+      <li><a href="https://techcrunch.com" target="_blank">TechCrunch</a></li>
+      <li><a href="https://thenextweb.com" target="_blank">The Next Web</a></li>
+    </ul>
   </section>
+
+  <section id="contacto">
+    <h2>‚úâÔ∏è Contacto</h2>
+    <p>¬øTienes sugerencias? Escr√≠benos a <a href="mailto:contacto@mastecnologia.com">contacto@mastecnologia.com</a></p>
+  </section>
+
   <footer>
-    <p>&copy; 2025 MAS TecnologÌa. Todos los derechos reservados.</p>
+    <p>&copy; 2025 MAS Tecnolog√≠a. Desarrollado por NUNCAESTARDE üí°</p>
   </footer>
 
   <script>
-    // Ejemplo usando Feed API p˙blica (puede cambiar si necesitas m·s fuentes o personalizaciÛn)
-    async function cargarRSS() {
-      const contenedor = document.getElementById('rss-feed');
+    async function cargarFeed(apiUrl, contenedorId, nombreFuente) {
+      const contenedor = document.getElementById(contenedorId);
       try {
-        const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.xataka.com/tag/programacion/rss2.xml");
+        const res = await fetch(apiUrl);
         const data = await res.json();
-        let html = "";
-        data.items.slice(0, 5).forEach(item => {
-          html += `<article><h3><a href="${item.link}" target="_blank">${item.title}</a></h3><p>${item.description.slice(0, 120)}...</p></article><hr>`;
+        let html = `<h3>${nombreFuente}</h3>`;
+        data.items.slice(0, 3).forEach(item => {
+          html += `<article><h4><a href="${item.link}" target="_blank">${item.title}</a></h4><p>${item.description.slice(0, 120)}...</p></article><hr>`;
         });
         contenedor.innerHTML = html;
       } catch (e) {
-        contenedor.innerHTML = "No se pudieron cargar las noticias. ?";
+        contenedor.innerHTML = `No se pudo cargar el feed de ${nombreFuente}.`;
       }
     }
-    cargarRSS();
+
+    cargarFeed("https://api.rss2json.com/v1/api.json?rss_url=https://www.xataka.com/tag/programacion/rss2.xml", "feed-xataka", "Xataka");
+    cargarFeed("https://api.rss2json.com/v1/api.json?rss_url=https://techcrunch.com/feed/", "feed-techcrunch", "TechCrunch");
+    cargarFeed("https://api.rss2json.com/v1/api.json?rss_url=https://thenextweb.com/feed/", "feed-tnw", "The Next Web");
   </script>
 </body>
 </html>
