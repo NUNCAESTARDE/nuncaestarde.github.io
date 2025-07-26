@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAS Tecnología</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+    header { background: #333; color: white; padding: 1rem; text-align: center; }
+    h1 { margin: 0; }
+    nav { background: #444; padding: 0.5rem; text-align: center; }
+    nav a { color: white; margin: 0 1rem; text-decoration: none; }
+    section { padding: 1rem; max-width: 800px; margin: auto; background: white; }
+    .feed { margin-bottom: 2rem; }
+    footer { background: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MAS Tecnología</h1>
+    <p>Lo último en Sistemas de Información y Programación</p>
+  </header>
+  <nav>
+    <a href="#novedades">Novedades</a>
+    <a href="#tendencias">Tendencias</a>
+    <a href="#fuentes">Fuentes</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <section id="novedades">
+    <h2>? Últimas noticias</h2>
+    <div class="feed" id="rss-feed">Cargando noticias...</div>
+  </section>
+  <section id="tendencias">
+    <h2>? Tendencias Actuales</h2>
+    <p>Aquí aparecerán temas destacados detectados por IA próximamente.</p>
+  </section>
+  <section id="fuentes">
+    <h2>? Fuentes Confiables</h2>
+    <ul>
+      <li><a href="https://techcrunch.com" target="_blank">TechCrunch</a></li>
+      <li><a href="https://thenextweb.com" target="_blank">The Next Web</a></li>
+      <li><a href="https://www.xataka.com" target="_blank">Xataka</a></li>
+    </ul>
+  </section>
+  <section id="contacto">
+    <h2>?? Contacto</h2>
+    <p>Para sugerencias, escríbenos a <a href="mailto:contacto@mastecnologia.com">contacto@mastecnologia.com</a></p>
+  </section>
+  <footer>
+    <p>&copy; 2025 MAS Tecnología. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Ejemplo usando Feed API pública (puede cambiar si necesitas más fuentes o personalización)
+    async function cargarRSS() {
+      const contenedor = document.getElementById('rss-feed');
+      try {
+        const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.xataka.com/tag/programacion/rss2.xml");
+        const data = await res.json();
+        let html = "";
+        data.items.slice(0, 5).forEach(item => {
+          html += `<article><h3><a href="${item.link}" target="_blank">${item.title}</a></h3><p>${item.description.slice(0, 120)}...</p></article><hr>`;
+        });
+        contenedor.innerHTML = html;
+      } catch (e) {
+        contenedor.innerHTML = "No se pudieron cargar las noticias. ?";
+      }
+    }
+    cargarRSS();
+  </script>
+</body>
+</html>
